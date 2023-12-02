@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Login Form</title>
+</head>
+<body>
+    <div class="login-container" id="loginContainer">
+        <form action="#" method="post" class="login-form" onsubmit="return loginUser()">
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <form action="#" method="post" class="password-form" onsubmit="return changePassword()">
+            <h2>Change Password</h2>
+            <label for="currentPassword">Current Password:</label>
+            <input type="password" id="currentPassword" name="currentPassword" required>
+
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+
+            <button type="submit">Change Password</button>
+        </form>
+    </div>
+
+    <div class="brand-container" id="brandContainer" style="display: none;">
+        <h1>Selamat datang di Branda</h1>
+        <div class="item">
+            <h2>Baju</h2>
+            <p>Harga: $50</p>
+            <button onclick="redirectToPaymentForm('Baju')">Beli</button>
+        </div>
+
+        <div class="item">
+            <h2>Celana</h2>
+            <p>Harga: $30</p>
+            <button onclick="redirectToPaymentForm('Celana')">Beli</button>
+        </div>
+
+        <div class="item">
+            <h2>Tas</h2>
+            <p>Harga: $40</p>
+            <button onclick="redirectToPaymentForm('Tas')">Beli</button>
+        </div>
+
+        <div class="item">
+            <h2>Jas</h2>
+            <p>Harga: $80</p>
+            <button onclick="redirectToPaymentForm('Jas')">Beli</button>
+        </div>
+
+        <div class="item">
+            <h2>Sepatu</h2>
+            <p>Harga: $60</p>
+            <button onclick="redirectToPaymentForm('Sepatu')">Beli</button>
+        </div>
+    </div>
+
+<!-- Tambahkan div untuk halaman pembayaran -->
+    <div class="payment-container" id="paymentContainer" style="display: none;">
+        <h1>Form Pembayaran</h1>
+        <div id="paymentDetails">
+            <!-- Detail pembayaran akan ditampilkan di sini -->
+        </div>
+        <label for="quantity">Jumlah Barang:</label>
+        <input type="number" id="quantity" required>
+        <label for="amountPaid">Jumlah Uang:</label>
+        <input type="number" id="amountPaid" required>
+        <button onclick="processPayment()">Proses Pembayaran</button>
+    </div>
+
+    </div>
+
+    <div class="payment-result" id="paymentResult" style="display: none;">
+        <h2>Hasil Pembayaran</h2>
+        <p>Total Harga: <span id="displayTotalPrice"></span></p>
+        <p>Jumlah Dibayarkan: $<span id="displayAmountPaid"></span></p>
+        <p>Kembalian: $<span id="displayChange"></span></p>
+    </div>
+</body>
+</html>

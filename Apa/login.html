@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Change Password</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loginForm">
+    <h2>Login</h2>
+    <form action="#" method="post" onsubmit="return login()">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required><br>
+      <input type="submit" value="Login">
+      <p onclick="showChangePasswordForm()">Forgot password? Click here to change it.</p>
+    </form>
+  </div>
+
+  <div id="changePasswordForm" class="hidden">
+    <h2>Change Password</h2>
+    <form action="#" method="post" onsubmit="return changePassword()">
+      <label for="oldPassword">Old Password:</label>
+      <input type="password" id="oldPassword" name="oldPassword" required><br>
+      <label for="newPassword">New Password:</label>
+      <input type="password" id="newPassword" name="newPassword" required><br>
+      <label for="confirmPassword">Confirm New Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+      <input type="submit" value="Change Password">
+      <p onclick="showLoginForm()">Go back to login.</p>
+    </form>
+  </div>
+
+  <script>
+    function showChangePasswordForm() {
+      document.getElementById('loginForm').classList.add('hidden');
+      document.getElementById('changePasswordForm').classList.remove('hidden');
+    }
+
+    function showLoginForm() {
+      document.getElementById('changePasswordForm').classList.add('hidden');
+      document.getElementById('loginForm').classList.remove('hidden');
+    }
+
+    function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+    // Add your actual login validation here
+    if (username === "a" && password === "s") {
+        // Hide login container
+        document.getElementById("loginContainer").style.display = "none";
+        // Show brand container
+        document.getElementById("brandContainer").style.display = "block";
+        return false; // Prevent form submission
+        } else {
+        alert("Login failed. Please check your username or password.");
+        return false; // Prevent form submission
+        }
+      return false; // prevent form submission
+    }
+
+    function changePassword() {
+        var oldPassword = document.getElementById("oldPassword").value;
+        var newPassword = document.getElementById("newPassword").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        // Add your actual password change validation here
+        if (newPassword === confirmPassword && oldPassword === "s") {
+            alert("Password berhasil diubah!");
+            showLoginForm();
+            return false; // Prevent form submission
+        } else {
+            alert("Gagal mengubah password. Pastikan old password benar dan new password sesuai.")
+        }
+        return false   ; // prevent form submission
+    }
+  </script>
+
+</body>
+</html>

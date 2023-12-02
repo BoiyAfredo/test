@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Purchasing Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <form action="#" method="post" id="purchaseForm">
+        <label for="item">Item:</label>
+        <select id="item" name="item" required>
+            <option value="baju">Baju</option>
+            <option value="celana">Celana</option>
+            <option value="sepatu">Sepatu</option>
+            <option value="jas">Jas</option>
+        </select>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+
+        <label for="total">Total Price:</label>
+        <input type="text" id="total" name="total" readonly>
+
+        <label for="customerMoney">Jumlah Uang:</label>
+        <input type="text" id="customerMoney" name="customerMoney" required>
+
+        <!-- Menampilkan informasi harga -->
+        <p id="priceInfo"></p>
+
+        <!-- Menampilkan konfirmasi pembayaran -->
+        <p id="paymentConfirmation" style="color: green;"></p>
+
+        <!-- Menampilkan informasi kembalian -->
+        <p id="changeInfo"></p>
+
+        <button type="button" onclick="purchase()">Purchase</button>
+    </form>
+
+    <script>
+        function purchase() {
+            var selectedItem = $("#item").val();
+            var quantity = $("#quantity").val();
+            var customerMoney = $("#customerMoney").val();
+            var pricePerItem = 0;
+
+            switch (selectedItem) {
+                case "baju":
+                    pricePerItem = 20;
+                    break;
+                case "celana":
+                    pricePerItem = 30;
+                    break;
+                case "sepatu":
+                    pricePerItem = 50;
+                    break;
+                case "jas":
+                    pricePerItem = 100;
+                    break;
+                default:
+                    pricePerItem = 0;
+                    break;
+            }
+
+            var total = quantity * pricePerItem;
+
+            // Menampilkan informasi harga
+            $("#priceInfo").text("Total Price: $" + total);
+
+            // Memeriksa apakah pelanggan memiliki cukup uang
+            if (customerMoney >= total) {
+                // Pelanggan memiliki cukup uang, tampilkan konfirmasi pembayaran
+                $("#paymentConfirmation").text("Pembayaran berhasil! Terima kasih.");
+
+                // Menghitung kembalian
+                var change = customerMoney - total;
+                $("#changeInfo").text("Kembalian: $" + change);
+            } else {
+                // Pelanggan tidak memiliki cukup uang, tampilkan pesan kesalahan
+                $("#paymentConfirmation").text("Maaf, uang tidak mencukupi.");
+                $("#changeInfo").text(""); // Menghapus informasi kembalian jika uang tidak mencukupi
+            }
+        }
+
+        // Menangani perubahan item atau kuantitas
+        $("#item, #quantity, #customerMoney").on("input", function () {
+            calculateTotal();
+        });
+
+        // Fungsi perhitungan total
+        function calculateTotal() {
+            var selectedItem = $("#item").val();
+            var quantity = $("#quantity").val();
+
+            // Ganti harga per item sesuai dengan jenis item
+            var pricePerItem = 0;
+            switch (selectedItem) {
+                case "baju":
+                    pricePerItem = 20;
+                    break;
+                case "celana":
+                    pricePerItem = 30;
+                    break;
+                case "sepatu":
+                    pricePerItem = 50;
+                    break;
+                case "jas":
+                    pricePerItem = 100;
+                    break;
+                default:
+                    pricePerItem = 0;
+                    break;
+            }
+
+            var total = quantity * pricePerItem;
+            $("#total").val(total);
+        }
+    </script>
+
+</body>
+</html>

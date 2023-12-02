@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Belanjaan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <h2>Form Belanjaan</h2>
+
+    <label for="baju">Baju:</label>
+    <input type="text" id="baju" name="baju" placeholder="Nama Baju" required>
+    <input type="number" id="harga_baju" name="harga_baju" placeholder="Harga Baju (Rp)" required>
+
+    <label for="buku">Buku:</label>
+    <input type="text" id="buku" name="buku" placeholder="Nama Buku" required>
+    <input type="number" id="harga_buku" name="harga_buku" placeholder="Harga Buku (Rp)" required>
+
+    <label for="tas">Tas:</label>
+    <input type="text" id="tas" name="tas" placeholder="Nama Tas" required>
+    <input type="number" id="harga_tas" name="harga_tas" placeholder="Harga Tas (Rp)" required>
+
+    <label for="pensil">Pensil:</label>
+    <input type="text" id="pensil" name="pensil" placeholder="Nama Pensil" required>
+    <input type="number" id="harga_pensil" name="harga_pensil" placeholder="Harga Pensil (Rp)" required>
+
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
